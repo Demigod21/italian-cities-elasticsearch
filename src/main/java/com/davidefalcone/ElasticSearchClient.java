@@ -21,20 +21,12 @@ public class ElasticSearchClient implements AutoCloseable {
 
     public ElasticSearchClient() {
         try {
-            // Create an SSL context that trusts all certificates (not recommended for production)
-            SSLContext sslContext = SSLContexts.custom()
-                    .loadTrustMaterial(new TrustAllStrategy())
-                    .build();
+
 
             BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
             credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials("elastic", "8=Adlc9-DCZWq2lltfSU"));
 
-            RestClientBuilder builder = RestClient.builder(new HttpHost("localhost", 9200, "https"))
-                    .setHttpClientConfigCallback(httpClientBuilder -> {
-                        httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
-                        httpClientBuilder.setSSLContext(sslContext);
-                        return httpClientBuilder;
-                    });
+            RestClientBuilder builder = RestClient.builder(new HttpHost("localhost", 9200, "http"));
 
             client = new RestHighLevelClient(builder);
         } catch (Exception e) {

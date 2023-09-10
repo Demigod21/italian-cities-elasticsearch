@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.xcontent.XContentType;
+import org.elasticsearch.common.xcontent.XContentType;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +21,10 @@ public class ElasticSearchIndexer {
         try (ElasticSearchClient esClient = new ElasticSearchClient()) {
 
             if (!esClient.indexExists(INDEX_NAME)) {
+                System.out.println("Non esiste");
                 esClient.getClient().indices().create(new CreateIndexRequest(INDEX_NAME), RequestOptions.DEFAULT);
+            }else{
+                System.out.println("Esiste");
             }
 
 
@@ -34,6 +37,7 @@ public class ElasticSearchIndexer {
 
             for (Map<String, Object> city : cities) {
                 IndexRequest request = new IndexRequest(INDEX_NAME).source(city, XContentType.JSON);
+                System.out.println("Inserting request "+request.toString());
                 esClient.getClient().index(request, RequestOptions.DEFAULT);
             }
         } catch (IOException e) {
