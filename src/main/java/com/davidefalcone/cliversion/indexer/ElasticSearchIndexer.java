@@ -1,5 +1,6 @@
-package com.davidefalcone;
+package com.davidefalcone.cliversion.indexer;
 
+import com.davidefalcone.cliversion.client.ElasticSearchClient;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;

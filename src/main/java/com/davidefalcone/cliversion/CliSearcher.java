@@ -1,4 +1,7 @@
-package com.davidefalcone;
+package com.davidefalcone.cliversion;
+
+import com.davidefalcone.cliversion.client.ElasticSearchClient;
+import com.davidefalcone.cliversion.searcher.ElasticSearchSearcher;
 
 import java.util.List;
 import java.util.Map;

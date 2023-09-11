@@ -1,9 +1,9 @@
-package com.davidefalcone;
+package com.davidefalcone.cliversion.searcher;
 
+import com.davidefalcone.cliversion.client.ElasticSearchClient;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.index.query.MultiMatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -38,7 +38,7 @@ public class ElasticSearchSearcher {
     public static List<Map<String, Object>> saerchEverywhere(ElasticSearchClient esClient, String query) throws IOException {
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         
-        sourceBuilder.query(QueryBuilders.wildcardQuery("Denominazione in italiano", "air*"));
+        sourceBuilder.query(QueryBuilders.wildcardQuery("Denominazione in italiano", query+"*"));
 
         SearchRequest searchRequest = new SearchRequest(INDEX_NAME);
         searchRequest.source(sourceBuilder);

@@ -1,4 +1,4 @@
-package com.davidefalcone;
+package com.davidefalcone.cliversion.client;
 
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
