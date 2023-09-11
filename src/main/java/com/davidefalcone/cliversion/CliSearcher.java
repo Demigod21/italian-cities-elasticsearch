@@ -1,6 +1,7 @@
 package com.davidefalcone.cliversion;
 
 import com.davidefalcone.cliversion.client.ElasticSearchClient;
+import com.davidefalcone.cliversion.indexer.ElasticSearchIndexer;
 import com.davidefalcone.cliversion.searcher.ElasticSearchSearcher;
 
 import java.util.List;
@@ -16,6 +17,11 @@ public class CliSearcher {
 
         String query = args[0];
         try (ElasticSearchClient esClient = new ElasticSearchClient()) {
+
+            ElasticSearchIndexer indexer = new ElasticSearchIndexer(esClient);
+            indexer.createIndexIfNotExist();
+            indexer.indexCities();
+
             List<Map<String, Object>> results = ElasticSearchSearcher.saerchEverywhere(esClient, query);
             results.forEach(System.out::println);
         }
