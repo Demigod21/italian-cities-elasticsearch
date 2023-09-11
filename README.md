@@ -27,12 +27,12 @@ It was specifically designed to demonstrate how to integrate Elasticsearch, from
    git clone https://github.com/Demigod21/italian-cities-elasticsearch.git
    ```
 
-###2. **Navigate to the project directory**:
+### 2. **Navigate to the project directory**:
    ```
 cd italian-cities-elasticserach
    ```
 
-###3. Using Docker to start Elasticsearch and Kibana:
+### 3. Using Docker to start Elasticsearch and Kibana:
 a. Navigate to the resources directory:
 
 ```
@@ -47,19 +47,19 @@ docker-compose up
 
 This will start Elasticsearch and Kibana. You can access Kibana at http://localhost:5601.
 
-###4. Build the project:
+### 4. Build the project:
 
 ```
 mvn clean install
 ```
-##How to use:
-###1. Spring Boot Version:
+## How to use:
+### 1. Spring Boot Version:
 **a. Start the application**:
 
 ```
 java -jar target/italian-cities-elasticserach-0.0.1-SNAPSHOT.jar
 ```
-####b. Open your browser or a tool like Postman and navigate to:
+#### b. Open your browser or a tool like Postman and navigate to:
 
 ```
 http://localhost:8080/api/cities/search?name=[CITY_NAME]
@@ -72,13 +72,13 @@ java -cp target/italian-cities-elasticserach-0.0.1-SNAPSHOT.jar cliversion.CliAp
 ```
 Replace [KEYWORD] with the name or partial name of the city you're searching for.
 
-###Contribution:
+### Contribution:
 If you'd like to contribute, please fork the repository and make changes as you'd like. Pull requests are warmly welcome.
 
-###License:
+### License:
 See LICENSE for more information.
 
-###Contact:
+### Contact:
 Davide Falcone - davide@davidefalcone.com
 
 Project Link: https://github.com/Demigod21/italian-cities-elasticsearch
