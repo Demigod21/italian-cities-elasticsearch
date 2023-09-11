@@ -1,18 +1,12 @@
 package com.davidefalcone.cliversion.client;
 
 import org.apache.http.HttpHost;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.conn.ssl.TrustAllStrategy;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.ssl.SSLContexts;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.indices.GetIndexRequest;
 
-import javax.net.ssl.SSLContext;
 import java.io.IOException;
 
 public class ElasticSearchClient implements AutoCloseable {
@@ -21,13 +15,7 @@ public class ElasticSearchClient implements AutoCloseable {
 
     public ElasticSearchClient() {
         try {
-
-
-            BasicCredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-            credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials("elastic", "8=Adlc9-DCZWq2lltfSU"));
-
             RestClientBuilder builder = RestClient.builder(new HttpHost("localhost", 9200, "http"));
-
             client = new RestHighLevelClient(builder);
         } catch (Exception e) {
             throw new RuntimeException(e);
