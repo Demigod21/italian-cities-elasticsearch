@@ -13,7 +13,7 @@ public class CliSearcher {
 
         String query = args[0];
         try (ElasticSearchClient esClient = new ElasticSearchClient()) {
-            List<Map<String, Object>> results = ElasticSearchSearcher.searchCities(esClient, query);
+            List<Map<String, Object>> results = ElasticSearchSearcher.saerchEverywhere(esClient, query);
             results.forEach(System.out::println);
         }
     }
